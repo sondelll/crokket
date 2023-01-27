@@ -1,14 +1,15 @@
-name: crocket
+name: crokket
 channels:
+  - nvidia
   - pytorch
   - conda-forge
   - defaults
 dependencies:
   - python=3.10
-  - pip=22.2
-  - pytorch
-  - ffmpeg
-  - onednn
+  - pip=22
+  - pytorch=1.13
+  - pytorch-cuda=11.6
+
   - pip:
     - numpy
     - scipy

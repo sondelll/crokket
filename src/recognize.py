@@ -3,12 +3,13 @@ import scipy.signal as sg
 import numpy as np
 from time import perf_counter
 
+import torch
+
 from .audio import standard_audio_preprocess
 from .splits import SplitTimes
 from .chunk import to_chunks
 from .io import chunks_to_disk
 from .ml import load_model
-
 
 WHISPER_SAMPLE_RATE = 16000
 
@@ -16,8 +17,8 @@ WHISPER_SAMPLE_RATE = 16000
 class CrokketRecognition:
     def __init__(self, threshold:float = 0.066) -> None:
         self.threshold = threshold
-        self.model = load_model("openai/whisper-base")
-        
+        self.model = load_model("openai/whisper-small")
+
     def __call__(self, filename:str, disk_copy:bool = False) -> str:
         start_time = perf_counter()
         audio_file = read(filename)
@@ -46,12 +47,13 @@ class CrokketRecognition:
     
     def transcribe_multi(self, chunks:list) -> str:
         outputs = []
-        for chunk in chunks:
+        for _n, chunk in enumerate(chunks):
             try:
                 output = self.model.transcribe(chunk, "sv", "transcribe")
                 outputs.append(output['text'])
+                print(f"Processed chunk {_n} of {len(chunks)}")
             except Exception as e:
-                print("Transcription failed,\n", e)
+                print("Transcription exception,\n", e)
         
         str_out = self.join_to_str(outputs)
         return str_out

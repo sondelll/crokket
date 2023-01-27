@@ -28,12 +28,16 @@
 from transformers import WhisperProcessor, WhisperForConditionalGeneration
 from typing import Optional, Union
 
+import torch
 import numpy as np
 import whisper
+
+device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 def load_model(model_id: str):
     processor = WhisperProcessor.from_pretrained(model_id)
     model = WhisperForConditionalGeneration.from_pretrained(model_id)
+
     return CoreTranscriber(processor, model)
 
 
@@ -43,23 +47,27 @@ class CoreTranscriber:
 
     def __init__(self, processor: WhisperProcessor, model: WhisperForConditionalGeneration):
         self.processor = processor
+
         self.model = model
+        self.model.to(device)
 
     def transcribe(self, audio: Union[str, np.ndarray], language: str, task: str, verbose: Optional[bool] = None):
+        audio = torch.Tensor(audio).cuda(device)
         self.model.config.forced_decoder_ids = self.processor.get_decoder_prompt_ids(task=task, language=language)
 
         segments = []
         all_predicted_ids = []
 
-        num_samples = audio.size
+        num_samples = audio.shape[0]
         seek = 0
         while seek < num_samples:
-            chunk = audio[seek: seek + self.N_SAMPLES_IN_CHUNK]
+            chunk = torch.as_tensor(audio[seek: seek + self.N_SAMPLES_IN_CHUNK]).to("cpu")
             
-            input_features = self.processor(audio=chunk, return_tensors="pt",
+            input_features:torch.Tensor = self.processor(audio=chunk, return_tensors="pt",
                                             sampling_rate=self.SAMPLE_RATE).input_features
+            input_features = input_features.cuda(device)
             
-            predicted_ids = self.model.generate(input_features, max_new_tokens=256)
+            predicted_ids = self.model.generate(input_features, max_new_tokens=256).to("cpu")
             all_predicted_ids.extend(predicted_ids)
 
             text: str = self.processor.batch_decode(predicted_ids, skip_special_tokens=True)[0]

@@ -13,7 +13,7 @@ class TextOut:
         self.out_dir = out_dir
         
     def write(self):
-        with open(f"{self.out_dir}{self.name}.txt", 'w') as file:
+        with open(f"{self.out_dir}{self.name}.txt", 'w', encoding="utf-8") as file:
             file.write(self.text)
             file.flush()
             file.close()

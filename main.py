@@ -6,7 +6,7 @@ from src.io import TextOut, filename_cleanup, adaptive_open_audio
 
 def main():
     start_time = perf_counter()
-    filename= "./long_sound.wav"
+    filename= "./24min.wav"
     recog = CrokketRecognition()
     tscript = recog(filename)
     clean_name = filename_cleanup(filename)
