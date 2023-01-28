@@ -1,9 +1,17 @@
+from os import listdir, mkdir
+from os.path import isdir
 import sys
-from time import perf_counter
 
 from src.transcription.recognize import CrokketRecognition
 from src.transcription.io import TextOut, filename_cleanup
 
+from time import perf_counter
+
+
+def ensure_required_folders():
+    basedir = listdir("./data")
+    if not isdir(basedir):
+        mkdir("./data")
 
 
 def main():
@@ -23,4 +31,5 @@ def main():
     
 
 if __name__ == '__main__':
+    ensure_required_folders()
     main()
