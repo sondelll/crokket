@@ -1,14 +1,15 @@
 from time import perf_counter
 
-from src.recognize import CrokketRecognition
-from src.io import TextOut, filename_cleanup, adaptive_open_audio
+from src.transcription.recognize import CrokketRecognition
+from src.transcription.io import TextOut, filename_cleanup
 
 
 def main():
     start_time = perf_counter()
-    filename= "./24min.wav"
-    recog = CrokketRecognition()
-    tscript = recog(filename)
+    filename= "./pod.wav"
+    cr = CrokketRecognition(filename)
+    tscript = cr.transcript()
+    
     clean_name = filename_cleanup(filename)
     out = TextOut(clean_name, tscript)
     out.write()
@@ -17,7 +18,6 @@ def main():
     seconds = finished_time-start_time
     (time, unit) = (seconds/60, "minutes") if seconds > 60 else (seconds, "seconds")
     print(f"Full transcribe run took {time} {unit}")
-    # adaptive_open_audio(filename)
     
 
 if __name__ == '__main__':
