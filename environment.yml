@@ -9,9 +9,11 @@ dependencies:
   - pip=22
   - pytorch=1.13
   - pytorch-cuda=11.6
+  - torchaudio
 
   - pip:
     - numpy
+    - soundfile
     - scipy
     - pytest
     - matplotlib
