@@ -1,12 +1,14 @@
+import sys
 from time import perf_counter
 
 from src.transcription.recognize import CrokketRecognition
 from src.transcription.io import TextOut, filename_cleanup
 
 
+
 def main():
     start_time = perf_counter()
-    filename= "./pod.wav"
+    filename=sys.argv[1]
     cr = CrokketRecognition(filename)
     tscript = cr.transcript()
     
