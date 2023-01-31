@@ -7,4 +7,4 @@ from src.transcription.acceleration import get_acceleration_device
 
 def test_acc_device_fetch():
     a_device = get_acceleration_device()
-    assert isinstance(a_device, torch.device)
+    assert isinstance(a_device, str)
