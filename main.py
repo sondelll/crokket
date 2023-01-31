@@ -1,4 +1,4 @@
-from os import listdir, mkdir
+from os import mkdir
 from os.path import isdir
 import sys
 
@@ -8,7 +8,7 @@ from src.transcription.io import TextOut, filename_cleanup
 from time import perf_counter
 
 
-def ensure_required_folders():
+def ensure_data_folder():
     basedir = "./data"
     if not isdir(basedir):
         mkdir("./data")
@@ -16,7 +16,10 @@ def ensure_required_folders():
 
 def main():
     start_time = perf_counter()
-    filename=sys.argv[1]
+    try:
+        filename=sys.argv[1]
+    except:
+        filename = "audio.wav"
     cr = CrokketRecognition(filename)
     tscript = cr.transcript()
     
@@ -31,5 +34,5 @@ def main():
     
 
 if __name__ == '__main__':
-    ensure_required_folders()
+    ensure_data_folder()
     main()
