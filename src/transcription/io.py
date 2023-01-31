@@ -1,5 +1,5 @@
 class TextOut:
-    def __init__(self, name:str, text:str, out_dir:str = "data/") -> None:
+    def __init__(self, name:str, text:str, out_dir:str = "./data/") -> None:
         self.name = name
         self.text = text
         if not out_dir.endswith("/"):
