@@ -1,7 +1,3 @@
-import numpy as np
-from scipy.io import wavfile
-
-
 class TextOut:
     def __init__(self, name:str, text:str, out_dir:str = "data/") -> None:
         self.name = name
