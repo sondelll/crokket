@@ -8,7 +8,7 @@ class TPipeline:
         _model = model_str()
         self.pipe = pipeline(
         "automatic-speech-recognition", model=_model,
-        chunk_length_s=30, device=_device, max_new_tokens=400
+        chunk_length_s=30, device=_device, max_new_tokens=320
         )
         
     def __call__(self, long_audio) -> str:
