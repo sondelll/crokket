@@ -1,0 +1,17 @@
+name: crokket
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip=22
+  - pytorch=1.13
+  - torchaudio
+  - pip:
+    - numpy
+    - pytest
+    - matplotlib
+    - transformers
+    - git+https://github.com/openai/whisper.git
+    - pyyaml
