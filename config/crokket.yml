@@ -2,4 +2,4 @@
 model: whisper 
 # MODEL_SIZE (whisper only):
 # 'tiny', 'base', 'small', 'medium' or 'large'
-model_size: small
+model_size: medium
