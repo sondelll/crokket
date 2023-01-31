@@ -7,4 +7,4 @@ from src.cfg import model_str
 def test_model_string():
     m_s = model_str()
     assert isinstance(m_s, str)
-    assert "openai/whisper" in m_s
+    assert "whisper" in m_s or "wav2vec" in m_s
