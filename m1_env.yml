@@ -8,10 +8,9 @@ dependencies:
   - pip=22
   - pytorch=1.13
   - torchaudio
+  - transformers
   - pip:
     - numpy
     - pytest
     - matplotlib
-    - transformers
-    - git+https://github.com/openai/whisper.git
     - pyyaml
