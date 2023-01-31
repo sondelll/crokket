@@ -9,7 +9,7 @@ from time import perf_counter
 
 
 def ensure_required_folders():
-    basedir = listdir("./data")
+    basedir = "./data"
     if not isdir(basedir):
         mkdir("./data")
 
