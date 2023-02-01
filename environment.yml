@@ -7,14 +7,13 @@ channels:
 dependencies:
   - python=3.10
   - pip=22
-  - pytorch=1.13
+  - pytorch=1.13.1
   - pytorch-cuda=11.6
-  - torchaudio
+  - torchaudio=0.13.1
   - pip:
-    - numpy
+    - numpy==1.24.1
     - soundfile
     - pytest
     - matplotlib
     - transformers
-    - git+https://github.com/openai/whisper.git
     - pyyaml
