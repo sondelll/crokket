@@ -2,8 +2,15 @@
 __pycache__/
 *.py[cod]
 *$py.class
+
+# Data folder
 data/**
+
+#MacOS Junk
 **.DS_Store
+
+# Audio files
+**/*.wav
 
 # C extensions
 *.so
