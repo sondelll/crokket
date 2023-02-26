@@ -1,4 +1,4 @@
-# Crokket Secure
+# Crokket
 _- The "I didn't come here to be a stenographer" ASR AI, powered by pretrained models from OpenAI_
 
 ## Requirements
