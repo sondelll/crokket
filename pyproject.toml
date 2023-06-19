@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "crokket"
+version = "0.0.1"
+description = "Safer audio to text"
+authors = ["Sondelll <sondelln@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [
+    { include="ckt/*", from="." },
+]
+
+[tool.poetry.scripts]
+ckt = "ckt.__main__:main"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+transformers = "^4.30.2"
+customtkinter = "^5.2.0"
+torch = "^2.0.1"
+numpy = "^1.25.0"
+torchaudio = "^2.0.2"
+soundfile = "^0.12.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.3.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

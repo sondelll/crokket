@@ -2,7 +2,7 @@ import os
 import sys
 sys.path.insert(0, os.curdir)
 
-from src.cfg import model_str
+from ckt.cfg import model_str
 
 def test_model_string():
     m_s = model_str()
