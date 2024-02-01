@@ -2,19 +2,32 @@
 _- The "I didn't come here to be a stenographer" ASR AI, powered by pretrained models from OpenAI_
 
 ## Requirements
-- [Anaconda](https://www.anaconda.com/)
+- Windows
+- Python 3.11
+- Venv (Should be included with the Python install, otherwise: `pip install venv`)
 - Cuda-enabled graphics card (Only necessary if you want it to be.. not slow.)
+- Cuda toolkit
 
 ### Updates
 If there has been an update, there's a possibility that some dependencies changed, if you're unsure you can run `conda env update` to update any dependency changes that has been made.
 
+## Installation
+There are a couple of steps, but it should be a fairly quick job.
+This guide assumes you are at the root of the repository when running commands.
+
+### Install Python and CUDA Toolkit
+- `winget install Python.Python.3.11`
+- `winget install Nvidia.CUDA`
+
+### Create and activate your virtual environment
+- `python -m venv .venv`
+- `.venv/Scripts/activate`
+
+### Install the PIP requirements
+- `python -m pip install -r requirements.txt`
+
 ## Getting started
-This assumes Anaconda (conda for short) has been installed.
 We suggest using the terminal inside Visual Studio Code, but if you have a preferred way of command-line usage - go right ahead.
-
-Make sure you are in the crokket directory that you cloned/downloaded, and use `conda env create` to have Anaconda create the Python environment with all the dependencies for you. You can of course set up the environment manually, but it's not recommended.
-
-(conda can be a bit finnicky at times, a workaround for this kind of issue is to use Anaconda Navigator to launch a shell using the `crokket` environment and using that instead of the built-in one in VSCode)
 
 Take your audio file, (only .wav files are supported as of right now), and place it somewhere you can easily copy or remember the file path.
 
