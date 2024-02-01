@@ -3,10 +3,10 @@ _- The "I didn't come here to be a stenographer" ASR AI, powered by pretrained m
 
 ## Requirements
 - Windows
-- Python 3.11 (`winget install Python.Python.3.11`)
+- Python 3.11
 - Venv (Should be included with the Python install, otherwise: `pip install venv`)
 - Cuda-enabled graphics card (Only necessary if you want it to be.. not slow.)
-- Cuda toolkit (`winget install Nvidia.CUDA`)
+- Cuda toolkit
 
 ### Updates
 If there has been an update, there's a possibility that some dependencies changed, if you're unsure you can run `conda env update` to update any dependency changes that has been made.
