@@ -1,7 +1,7 @@
 VERSION = {
     "major":0,
-    "minor":6,
-    "patch":2
+    "minor":7,
+    "patch":0
 }
 
 
